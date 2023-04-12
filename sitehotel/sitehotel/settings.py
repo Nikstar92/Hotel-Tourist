@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-u=uxq8#d5sp$+f3zfmwayi8$eidn^e487@$thh&njt@b(sui=!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'touristapp.apps.TouristappConfig',
 ]
 
 MIDDLEWARE = [
