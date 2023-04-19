@@ -178,7 +178,7 @@ div.button {
 	margin: 30px 0 0 0;
 	color: #999;
 }
-.left-chapters ul li.selected {color: #0059b2; }
+.left-chapters ul li.selected {color: black; }
 .left-chapters ul li a {
 	color: #0059b2;
 	text-decoration: none;
