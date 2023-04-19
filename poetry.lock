@@ -27,6 +27,14 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "listview"
+version = "0.1.0"
+description = ""
+category = "main"
+optional = false
+python-versions = ">=3.8,<4.0"
+
+[[package]]
 name = "pillow"
 version = "9.5.0"
 description = "Python Imaging Library (Fork)"
@@ -57,7 +65,7 @@ python-versions = ">=2"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.11"
-content-hash = "9ca3bb0af3b492392f4fcdd1add659ccf11b63092089bcc22f548171291ee1b8"
+content-hash = "26939831868fc6ebd46df61f239c6bf2803b896468f8651a72130c4f99655e6a"
 
 [metadata.files]
 asgiref = [
@@ -67,6 +75,10 @@ asgiref = [
 django = [
     {file = "Django-4.2-py3-none-any.whl", hash = "sha256:ad33ed68db9398f5dfb33282704925bce044bef4261cd4fb59e4e7f9ae505a78"},
     {file = "Django-4.2.tar.gz", hash = "sha256:c36e2ab12824e2ac36afa8b2515a70c53c7742f0d6eaefa7311ec379558db997"},
+]
+listview = [
+    {file = "listview-0.1.0-py3-none-any.whl", hash = "sha256:3daa47cb34cc3692520967cf23876288ab5cd55c35e1fc98d84ecb5b832a7ccf"},
+    {file = "listview-0.1.0.tar.gz", hash = "sha256:e162e6edf4dc81accbf138ffd20c68d85526cdbd3832f17824ee68aac5996bc3"},
 ]
 pillow = [
     {file = "Pillow-9.5.0-cp310-cp310-macosx_10_10_x86_64.whl", hash = "sha256:ace6ca218308447b9077c14ea4ef381ba0b67ee78d64046b3f19cf4e1139ad16"},

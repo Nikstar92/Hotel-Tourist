@@ -1,23 +1,20 @@
-from django.http import HttpResponse, HttpResponseNotFound, Http404
-from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, HttpResponseNotFound
+from django.shortcuts import render
+from django.views.generic import ListView, DetailView
 
 from .models import *
-
-menu = [{'title': 'О сайте', 'url_name': 'about'},
-        {'title': 'Обратная связь', 'url_name': 'contact'},
-        {'title': 'Войти', 'url_name': 'login'}
-        ]
+from .utils import *
 
 
-def index(request):
-    posts = Apartaments.objects.all()
-    context = {
-        'posts': posts,
-        'menu': menu,
-        'title': 'Главная страница',
-        'cat_selected': 0,
-    }
-    return render(request, 'touristapp/index.html', context=context)
+class HotelHome(DataMixin, ListView):
+    model = Apartaments
+    template_name = 'touristapp/index.html'
+    context_object_name = 'posts'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Главная страница")
+        return dict(list(context.items()) + list(c_def.items()))
 
 
 def about(request):
@@ -28,32 +25,32 @@ def contact(request):
     return HttpResponse('Обратная связь')
 
 
-def show_post(request, post_slug):
-    post = get_object_or_404(Apartaments, slug=post_slug)
+class ShowPost(DataMixin, DetailView):
+    model = Apartaments
+    template_name = 'touristapp/post.html'
+    slug_url_kwarg = 'post_slug'
+    context_object_name = 'post'
 
-    context = {
-        'post': post,
-        'menu': menu,
-        'title': post.title,
-        'cat_selected': post.cat_id,
-    }
-
-    return render(request, 'touristapp/post.html', context=context)
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title=context['post'])
+        return dict(list(context.items()) + list(c_def.items()))
 
 
-def show_category(request, cat_id):
-    posts = Apartaments.objects.filter(cat_id=cat_id)
+class HotelCategory(DataMixin, ListView):
+    model = Apartaments
+    template_name = 'touristapp/index.html'
+    context_object_name = 'posts'
+    allow_empty = False
 
-    if len(posts) == 0:
-        raise Http404()
+    def get_queryset(self):
+        return Apartaments.objects.filter(cat__slug=self.kwargs['cat_slug'])
 
-    context = {
-        'posts': posts,
-        'menu': menu,
-        'title': 'Апартаменты по категориям',
-        'cat_selected': cat_id,
-    }
-    return render(request, 'touristapp/index.html', context=context)
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title='Категория - ' + str(context['posts'][0].cat),
+                                      cat_selected=context['posts'][0].cat_id)
+        return dict(list(context.items()) + list(c_def.items()))
 
 
 def login(request):
