@@ -11,6 +11,7 @@ python = "^3.11"
 django = "^4.2"
 pillow = "^9.5.0"
 listview = "^0.1.0"
+django-user-accounts = "^3.2.0"
 
 
 [build-system]
