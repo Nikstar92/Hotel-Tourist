@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from captcha.fields import CaptchaField
 
 
 class RegisterUserForm(UserCreationForm):
@@ -23,3 +24,10 @@ class LoginUserForm(AuthenticationForm):
     #     del self.fields["username"]
     #
     # field_order = ["email", "password"]
+
+
+class ContactForm(forms.Form):
+    name = forms.CharField(label='Имя', max_length=255)
+    email = forms.EmailField(label='Email')
+    content = forms.CharField(label='', widget=forms.Textarea(attrs={'cols': 60, 'rows': 10}))
+    captcha = CaptchaField(label='Введите слово на картинке*')

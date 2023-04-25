@@ -38,6 +38,33 @@ python-versions = ">=3.6"
 django = "*"
 
 [[package]]
+name = "django-ranged-response"
+version = "0.2.0"
+description = "Modified Django FileResponse that adds Content-Range headers."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+django = "*"
+
+[[package]]
+name = "django-simple-captcha"
+version = "0.5.17"
+description = "A very simple, yet powerful, Django captcha application"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = ">=2.2"
+django-ranged-response = "0.2.0"
+Pillow = ">=6.2.0"
+
+[package.extras]
+test = ["testfixtures"]
+
+[[package]]
 name = "django-user-accounts"
 version = "3.2.0"
 description = "a Django user account app"
@@ -97,7 +124,7 @@ python-versions = ">=2"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.11"
-content-hash = "376e5234f9ed4030aa35ab39a3c633031598c3a0c919482d7790c62d0f541f58"
+content-hash = "8a4c32c13f3112799edc0810ab77184b09b44cfa5560b2d5ac584ee411c31d5a"
 
 [metadata.files]
 asgiref = [
@@ -111,6 +138,13 @@ django = [
 django-appconf = [
     {file = "django-appconf-1.0.5.tar.gz", hash = "sha256:be3db0be6c81fa84742000b89a81c016d70ae66a7ccb620cdef592b1f1a6aaa4"},
     {file = "django_appconf-1.0.5-py3-none-any.whl", hash = "sha256:ae9f864ee1958c815a965ed63b3fba4874eec13de10236ba063a788f9a17389d"},
+]
+django-ranged-response = [
+    {file = "django-ranged-response-0.2.0.tar.gz", hash = "sha256:f71fff352a37316b9bead717fc76e4ddd6c9b99c4680cdf4783b9755af1cf985"},
+]
+django-simple-captcha = [
+    {file = "django-simple-captcha-0.5.17.tar.gz", hash = "sha256:9649e66dab4e71efacbfef02f48b83b91684898352a1ab56f1686ce71033b328"},
+    {file = "django_simple_captcha-0.5.17-py2.py3-none-any.whl", hash = "sha256:f9a07e5e9de264ba4039c9eaad66bc48188a21ceda5fcdc2fa13c5512141c2c9"},
 ]
 django-user-accounts = [
     {file = "django-user-accounts-3.2.0.tar.gz", hash = "sha256:3a0a553984f3350f6141377914ca03194d3d5814b6202516f5ecbe2ba1d2ce28"},
