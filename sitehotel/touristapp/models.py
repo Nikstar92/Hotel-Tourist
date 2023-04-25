@@ -1,5 +1,8 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
+
+from touristapp.managers import UserManager
 
 
 class Apartaments(models.Model):
@@ -39,4 +42,11 @@ class Category(models.Model):
         verbose_name_plural = 'Категории'
         ordering = ['id']
 
-# Create your models here.
+
+class User(AbstractUser):
+    username = None
+    email = models.EmailField('Email', unique=True)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+    objects = UserManager()
