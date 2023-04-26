@@ -38,7 +38,7 @@ class Category(models.Model):
         return reverse('category', kwargs={'cat_slug': self.slug})
 
     class Meta:
-        verbose_name = 'Категория'
+        verbose_name = 'Категорию'
         verbose_name_plural = 'Категории'
         ordering = ['id']
 
@@ -50,3 +50,8 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
     objects = UserManager()
+
+    class Meta:
+        verbose_name = 'Пользователя'
+        verbose_name_plural = 'Пользователи'
+        ordering = ['id']

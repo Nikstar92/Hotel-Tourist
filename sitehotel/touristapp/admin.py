@@ -19,5 +19,12 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
 
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('id', 'email', 'first_name')
+    list_display_links = ('id', 'email', 'first_name')
+    search_fields = ('email', 'first_name')
+
+
 admin.site.register(Apartaments, ApartamentsAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(User, UserAdmin)
